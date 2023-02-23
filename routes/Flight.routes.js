@@ -2,12 +2,24 @@ const express = require("express")
 const {Flightmodel}= require("../models/Flight.model")
 const flightRouter = express.Router()
 
-flightRouter.get("/",(req,res)=>{
-    res.status(200).send("All the flights")
+flightRouter.get("/", async(req,res)=>{
+    try {
+        const data = await Flight.find();
+        res.send(data);
+        res.status(200).send("All the flights")
+      } catch (err) {
+        console.log(err);
+      }
 })
 
-flightRouter.get("/:id",(req,res)=>{
-    res.status(200).send("Particular flight")
+flightRouter.get("/:id",async(req,res)=>{
+    try {
+        const data = await Flight.find();
+        res.send(data);
+        res.status(200).send("Particular flight")
+      } catch (err) {
+        console.log(err);
+      }
 })
 
 flightRouter.post("/", async(req,res)=>{
